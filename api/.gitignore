@@ -1,0 +1,15 @@
+**/.classpath
+**/.env
+**/.project
+**/.settings
+**/.toolstarget
+**/*.*proj.user
+**/*.dbmdl
+**/*.jfm
+**/azds.yaml
+**/bin
+**/charts
+**/npm-debug.log
+**/obj
+**/secrets.dev.yaml
+**/values.dev.yaml

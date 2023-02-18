@@ -1,0 +1,43 @@
+version: '2'
+services:
+  api:
+    build: ./api/.
+    volumes:
+      - ./api/Domain:/app
+      - ./api/Infrastructure:/app
+      - ./api/Common:/app
+      - ./api/Application:/app
+    ports:
+      - 81:80
+    depends_on:
+      - db
+    links:
+      - db
+  
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment: 
+      MYSQL_ROOT_PASSWORD: "root"
+
+  # mysql-workbench:
+  #   image: lscr.io/linuxserver/mysql-workbench:latest
+  #   container_name: mysql-workbench
+  #   environment:
+  #     - PUID=1000
+  #     - PGID=1000
+  #     - TZ=Etc/UTC
+  #   volumes:
+  #     - ./mysql-workbench:/config
+  #   ports:
+  #     - 3000:3000
+  #   cap_add:
+  #     - IPC_LOCK
+  #   restart: unless-stopped
+
+  front:
+    build: ./front/.
+    command: npm run start
+    volumes:
+      - ./front/app:/src
