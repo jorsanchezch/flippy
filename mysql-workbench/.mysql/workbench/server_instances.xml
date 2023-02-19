@@ -1,14 +1,13 @@
 <?xml version="1.0"?>
 <data grt_format="2.0">
-  <value _ptr_="0x5651b2466630" type="list" content-type="object" content-struct-name="db.mgmt.ServerInstance">
+  <value _ptr_="0x55e0129c1bb0" type="list" content-type="object" content-struct-name="db.mgmt.ServerInstance">
     <value type="object" struct-name="db.mgmt.ServerInstance" id="ddd7eb76-af5d-11ed-9041-0242ac170004" struct-checksum="0x367436e2">
       <link type="object" struct-name="db.mgmt.Connection" key="connection">be94100a-af5d-11ed-9041-0242ac170004</link>
-      <value _ptr_="0x5651b2e30210" type="dict" key="loginInfo"/>
-      <value _ptr_="0x5651b2070880" type="dict" key="serverInfo">
+      <value _ptr_="0x55e0132ea460" type="dict" key="loginInfo"/>
+      <value _ptr_="0x55e012e8d890" type="dict" key="serverInfo">
         <value type="int" key="setupPending">1</value>
       </value>
       <value type="string" key="name">flippy-local</value>
-      <link type="object" struct-name="GrtObject" key="owner">b5250f1a-af5d-11ed-9041-0242ac170004</link>
     </value>
   </value>
 </data>

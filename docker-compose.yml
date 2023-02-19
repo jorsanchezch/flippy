@@ -21,20 +21,20 @@ services:
     environment: 
       MYSQL_ROOT_PASSWORD: "root"
 
-  # mysql-workbench:
-  #   image: lscr.io/linuxserver/mysql-workbench:latest
-  #   container_name: mysql-workbench
-  #   environment:
-  #     - PUID=1000
-  #     - PGID=1000
-  #     - TZ=Etc/UTC
-  #   volumes:
-  #     - ./mysql-workbench:/config
-  #   ports:
-  #     - 3000:3000
-  #   cap_add:
-  #     - IPC_LOCK
-  #   restart: unless-stopped
+  mysql-workbench:
+    image: lscr.io/linuxserver/mysql-workbench:latest
+    container_name: mysql-workbench
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./mysql-workbench:/config
+    ports:
+      - 3000:3000
+    cap_add:
+      - IPC_LOCK
+    restart: unless-stopped
 
   front:
     build: ./front/.

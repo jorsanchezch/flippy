@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <data grt_format="2.0">
-  <value _ptr_="0x5651b2924bb0" type="list" content-type="object" content-struct-name="db.mgmt.Connection">
+  <value _ptr_="0x55e012b97a90" type="list" content-type="object" content-struct-name="db.mgmt.Connection">
     <value type="object" struct-name="db.mgmt.Connection" id="be94100a-af5d-11ed-9041-0242ac170004" struct-checksum="0x96ba47d8">
       <link type="object" struct-name="db.mgmt.Driver" key="driver">com.mysql.rdbms.mysql.driver.native</link>
       <value type="string" key="hostIdentifier">Mysql@db:3306</value>
       <value type="int" key="isDefault">0</value>
-      <value _ptr_="0x5651b2d578b0" type="dict" key="modules"/>
-      <value _ptr_="0x5651b2d57930" type="dict" key="parameterValues">
+      <value _ptr_="0x55e012e81f30" type="dict" key="modules"/>
+      <value _ptr_="0x55e012e81fb0" type="dict" key="parameterValues">
         <value type="string" key="SQL_MODE"></value>
         <value type="string" key="hostName">db</value>
-        <value type="int" key="lastConnected">1676705321</value>
+        <value type="int" key="lastConnected">1676813523</value>
         <value type="string" key="password"></value>
         <value type="int" key="port">3306</value>
         <value type="string" key="schema"></value>
@@ -22,6 +22,7 @@
         <value type="string" key="userName">root</value>
       </value>
       <value type="string" key="name">flippy-local</value>
+      <link type="object" struct-name="GrtObject" key="owner">bddfbe14-b059-11ed-82f4-0242ac1c0003</link>
     </value>
   </value>
 </data>
