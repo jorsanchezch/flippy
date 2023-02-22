@@ -1,8 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities.Sample
 {
-    public class Instrument : PocoEntity
+    [Index(nameof(Instrument.Name), IsUnique = true)]
+    public class Instrument : IEntity
     {
         [Key]
         public int Id { get; set; }

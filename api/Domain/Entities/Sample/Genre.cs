@@ -1,9 +1,11 @@
 ﻿using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities.Sample
 {
-    public class Genre : PocoEntity
+    [Index(nameof(Genre.Name), IsUnique = true)]
+    public class Genre : IEntity
     {
         [Key]
         public int Id { get; set; }

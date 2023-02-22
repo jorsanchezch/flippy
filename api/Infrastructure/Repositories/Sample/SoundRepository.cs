@@ -1,0 +1,15 @@
+using Infrastructure.Repositories;
+using Infrastructure.Data;
+using Domain.Entities.Sample;
+
+namespace Infrastructure.Repositories.Sample
+{
+    public class SoundRepository : Repository<Sound>
+    {
+        public SoundRepository(AppDbContext dbContext) : base(dbContext)
+        {
+        }
+
+        // additional methods for domain-specific operations
+    }
+}

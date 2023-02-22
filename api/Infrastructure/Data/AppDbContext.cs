@@ -1,14 +1,16 @@
 ﻿using Domain.Entities.Identity;
 using Domain.Entities.Sample;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Infrastructure.Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<User>
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Sound> Sounds { get; set; }
+        public DbSet<Genre> Genres { get; set; }
+        public DbSet<Instrument> Instruments { get; set; }
 
         public AppDbContext() : base()
         {
@@ -30,21 +32,69 @@ namespace Infrastructure.Data
              * to access the entities.
              * 
              * Then remove it and point the Infrastructure layer (by default) to run the migrations.
+             * 
+             * This shall be automated.
              */
             optionsBuilder.UseMySql(conn, ServerVersion.AutoDetect(conn)/*, x => x.MigrationsAssembly("Domain")*/);
-
         }
         
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-
-
+            base.OnModelCreating(modelBuilder); 
 
             // This goes for every Value Object
             modelBuilder.Entity<Sound>()
                 .OwnsOne(o => o.Key);
+
+            string[] musicGenres = {
+                "Rock",
+                "Pop",
+                "Jazz",
+                "Classical",
+                "Metal",
+                "Country",
+                "Rap",
+                "Hip Hop",
+                "Reggae",
+                "Blues",
+                "Folk",
+                "Soul",
+                "Electronic",
+                "Funk",
+                "Disco",
+                "Punk",
+                "Indie",
+                "R&B"
+            };
+
+            modelBuilder.Entity<Genre>()
+                .HasData(musicGenres.Select((genre, i) => new { 
+                        Id = ++i,
+                        Name = genre,
+                    })
+                );
+
+            string[] instruments = {
+                "Guitar",
+                "Bass",
+                "Drums",
+                "Piano",
+                "Keyboard",
+                "Violin",
+                "Saxophone",
+                "Trumpet",
+                "Trombone",
+                "Flute",
+                "Clarinet"
+            };
+
+            modelBuilder.Entity<Instrument>()
+                .HasData(instruments.Select((instrument, i) => new {
+                        Id = ++i,
+                        Name = instrument,
+                    })
+                );
         }
     }
 }

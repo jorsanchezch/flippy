@@ -1,6 +1,6 @@
 namespace Domain.Entities
 {
-    public class IEntity
+    public interface IEntity
     {
         
     }

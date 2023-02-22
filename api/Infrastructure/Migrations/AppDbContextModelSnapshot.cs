@@ -81,7 +81,7 @@ namespace Domain.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("AudioUri")
+                    b.Property<string>("AudioUrl")
                         .IsRequired()
                         .HasColumnType("longtext");
 

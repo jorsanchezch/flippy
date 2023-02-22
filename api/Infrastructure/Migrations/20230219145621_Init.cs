@@ -55,7 +55,7 @@ namespace Domain.Migrations
                     Description = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Bpm = table.Column<int>(type: "int", nullable: false),
-                    AudioUri = table.Column<string>(type: "longtext", nullable: false)
+                    AudioUrl = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Key_Root = table.Column<int>(type: "int", nullable: false),
                     Key_Mod = table.Column<int>(type: "int", nullable: false),

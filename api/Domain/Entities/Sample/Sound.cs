@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities.Sample
 {
-    public class Sound : PocoEntity
+    public class Sound : IEntity
     {
         [Key]
         public int Id { get; set; }
@@ -15,7 +15,7 @@ namespace Domain.Entities.Sample
         [Required]
         public int Bpm { get; set; }
         [Required]
-        public string AudioUri { get; set; }
+        public string AudioUrl { get; set; }
         public Key Key { get; set; }
         public ICollection<Instrument> Instruments { get; set; }
         public ICollection<Genre> Genres { get; set; }
