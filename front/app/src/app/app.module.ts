@@ -8,6 +8,8 @@ import { SoundListComponent } from './sample/sound-list/sound-list.component';
 import { SoundItemComponent } from './sample/sound-grid/sound-item/sound-item.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SearchPipe } from './pipes/search.pipe';
+import { RouterTestingModule } from "@angular/router/testing";
+import { SoundService } from './sample/services/sound.service';
 
 @NgModule({
   declarations: [
@@ -20,9 +22,10 @@ import { SearchPipe } from './pipes/search.pipe';
     SearchPipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterTestingModule
   ],
-  providers: [],
+  providers: [SoundService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

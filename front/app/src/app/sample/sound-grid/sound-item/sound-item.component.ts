@@ -7,7 +7,7 @@ import { Sound } from '../../models/sound';
   styleUrls: ['./sound-item.component.css']
 })
 export class SoundItemComponent {
-  @Input() sound: Sound;
+  @Input() sound!: Sound;
 
   playSound(): void {
     const audio = new Audio(this.sound.audioUrl);

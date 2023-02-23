@@ -8,7 +8,7 @@ import { Sound } from '../models/sound';
 })
 export class SoundService {
   private soundsUrl = 'api/sounds'; // URL to web api
-  private audio: HTMLAudioElement;
+  private audio!: HTMLAudioElement;
 
   constructor(private http: HttpClient) { }
 

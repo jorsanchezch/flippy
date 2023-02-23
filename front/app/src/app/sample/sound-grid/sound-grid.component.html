@@ -16,7 +16,7 @@
         <td>{{ sound.length }}</td>
         <td>{{ sound.bpm }}</td>
         <td>{{ sound.keyRoot }} {{ sound.keyMod }} {{ sound.keyForm }}</td>
-        <td>{{ sound.tags.join(', ') }}</td>
+        <!--td>{{ sound.tags.join(', ') }}</td-->
         <td>
           <ul>
             <li *ngFor="let instrument of sound.instruments">{{ instrument.name }}</li>
@@ -30,4 +30,3 @@
       </tr>
     </tbody>
   </table>
-  

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Sound } from '../models/sound';
 
 @Component({
@@ -7,7 +7,7 @@ import { Sound } from '../models/sound';
   styleUrls: ['./sound-list.component.css']
 })
 export class SoundListComponent {
-  @Input() sounds: Sound[];
+  @Input() sounds!: Sound[];
 
   constructor() { }
 }

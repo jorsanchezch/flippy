@@ -5,7 +5,7 @@ export interface Sound {
     name: string;
     description: string;
     audioUrl: string;
-    bpm: string;
+    bpm: number;
     length: number;
     keyRoot: string;
     keyMod: string;

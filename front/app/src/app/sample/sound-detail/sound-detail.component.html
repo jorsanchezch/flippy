@@ -1,1 +1,14 @@
-<p>sound-detail works!</p>
+<div class="container">
+  <h1>{{ sound.name }}</h1>
+  <p><strong>Duration:</strong> {{ sound.length }}</p>
+  <p><strong>BPM:</strong> {{ sound.bpm }}</p>
+  <p><strong>Key Root:</strong> {{ sound.keyRoot }}</p>
+  <p><strong>Key Mod:</strong> {{ sound.keyMod }}</p>
+  <p><strong>Key Form:</strong> {{ sound.keyForm }}</p>
+  <p><strong>Instruments:</strong> {{ sound.instruments.join(', ') }}</p>
+  <p><strong>Genres:</strong> {{ sound.genres.join(', ') }}</p>
+  <audio controls>
+    <source src="{{ sound.audioUrl }}" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</div>

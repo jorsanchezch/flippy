@@ -10,7 +10,7 @@ import { SoundService } from '../services/sound.service';
   styleUrls: ['./sound-detail.component.css']
 })
 export class SoundDetailComponent implements OnInit {
-  sound: Sound;
+  sound!: Sound;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,7 +23,8 @@ export class SoundDetailComponent implements OnInit {
   }
 
   getSound(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = +this.route.snapshot.paramMap.get('id')!;
+
     this.soundService.getSound(id)
       .subscribe(sound => this.sound = sound);
   }
