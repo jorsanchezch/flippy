@@ -1,0 +1,33 @@
+<table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Length</th>
+        <th>BPM</th>
+        <th>Key</th>
+        <th>Tags</th>
+        <th>Instruments</th>
+        <th>Genres</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sound of sounds">
+        <td><app-sound-item [sound]="sound"></app-sound-item></td>
+        <td>{{ sound.length }}</td>
+        <td>{{ sound.bpm }}</td>
+        <td>{{ sound.keyRoot }} {{ sound.keyMod }} {{ sound.keyForm }}</td>
+        <td>{{ sound.tags.join(', ') }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let instrument of sound.instruments">{{ instrument.name }}</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li *ngFor="let genre of sound.genres">{{ genre.name }}</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

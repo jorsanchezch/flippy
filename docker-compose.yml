@@ -41,3 +41,5 @@ services:
     command: npm run start
     volumes:
       - ./front/app:/src
+    ports:
+      - 5000:5000
