@@ -10,6 +10,8 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SearchPipe } from './pipes/search.pipe';
 import { RouterTestingModule } from "@angular/router/testing";
 import { SoundService } from './sample/services/sound.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { SoundService } from './sample/services/sound.service';
   ],
   imports: [
     BrowserModule,
-    RouterTestingModule
+    HttpClientModule,
+    RouterTestingModule,
   ],
   providers: [SoundService],
   bootstrap: [AppComponent]

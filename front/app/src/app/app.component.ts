@@ -12,7 +12,6 @@ export class AppComponent {
 
   constructor(private soundService: SoundService) {}
 
-
   onSearch(query: string) {
     console.log(query);
   }
