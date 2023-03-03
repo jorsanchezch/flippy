@@ -25,9 +25,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/chart.js/dist/chart.js",
+              "node_modules/chart.js/dist/chart.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -87,12 +90,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
         }
       }
+    }
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss"
     }
   },
   "cli": {

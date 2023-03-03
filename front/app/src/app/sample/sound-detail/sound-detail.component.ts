@@ -7,7 +7,7 @@ import { SoundService } from '../services/sound.service';
 @Component({
   selector: 'app-sound-detail',
   templateUrl: './sound-detail.component.html',
-  styleUrls: ['./sound-detail.component.css']
+  styleUrls: ['./sound-detail.component.scss']
 })
 export class SoundDetailComponent implements OnInit {
   sound!: Sound;

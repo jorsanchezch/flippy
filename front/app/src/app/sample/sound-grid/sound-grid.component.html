@@ -5,14 +5,13 @@
         <th>Length</th>
         <th>BPM</th>
         <th>Key</th>
-        <th>Tags</th>
         <th>Instruments</th>
         <th>Genres</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let sound of sounds">
-        <td><app-sound-item [sound]="sound"></app-sound-item></td>
+        <td>{{ sound.name }}</td>
         <td>{{ sound.length }}</td>
         <td>{{ sound.bpm }}</td>
         <td>{{ sound.keyRoot }} {{ sound.keyMod }} {{ sound.keyForm }}</td>

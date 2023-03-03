@@ -4,7 +4,7 @@ import { Sound } from '../models/sound';
 @Component({
   selector: 'app-sound-list',
   templateUrl: './sound-list.component.html',
-  styleUrls: ['./sound-list.component.css']
+  styleUrls: ['./sound-list.component.scss']
 })
 export class SoundListComponent {
   @Input() sounds!: Sound[];

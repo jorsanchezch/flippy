@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Sound } from '../models/sound';
+import { env } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SoundService {
-  private soundsUrl = 'api/sounds'; // URL to web api
+  private soundsUrl = env.apiUrl + 'api/sounds'; // URL to web api
   private audio!: HTMLAudioElement;
 
   constructor(private http: HttpClient) { }
@@ -25,7 +26,7 @@ export class SoundService {
     if (!this.audio) {
       this.audio = new Audio();
     }
-    this.audio.src = `api/sounds/${id}/file`;
+    this.audio.src = this.soundsUrl + `/${id}/file`;
     this.audio.play();
   }
 
