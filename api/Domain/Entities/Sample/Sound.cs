@@ -10,13 +10,13 @@ namespace Domain.Entities.Sample
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
-
         public string? Description { get; set; }
         [Required]
         public int Bpm { get; set; }
         [Required]
         public string AudioUrl { get; set; }
         public Key Key { get; set; }
+        public Collection Collection { get; set; }
         public ICollection<Instrument> Instruments { get; set; }
         public ICollection<Genre> Genres { get; set; }
         public ICollection<User> Users { get; set;}
