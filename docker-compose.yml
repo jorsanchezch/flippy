@@ -2,17 +2,15 @@ version: '2'
 services:
   api:
     build: ./api/.
-    volumes:
-      - ./api/Domain:/app
-      - ./api/Infrastructure:/app
-      - ./api/Common:/app
-      - ./api/Application:/app
     ports:
       - 81:80
     depends_on:
       - db
     links:
       - db
+    entrypoint: ["dotnet", "/app/Application.dll"]
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
   
   db:
     image: mysql
@@ -42,4 +40,4 @@ services:
     volumes:
       - ./front/app:/src
     ports:
-      - 5000:5000
+      - 5002:5000
