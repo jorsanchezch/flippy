@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Sound } from './sample/models/sound';
 import { SoundService } from './sample/services/sound.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',

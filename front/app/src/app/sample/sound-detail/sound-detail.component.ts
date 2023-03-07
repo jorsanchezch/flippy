@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { Sound } from '../models/sound';
 import { SoundService } from '../services/sound.service';
@@ -11,7 +11,7 @@ import { SoundService } from '../services/sound.service';
 })
 export class SoundDetailComponent implements OnInit {
   sound!: Sound;
-
+  
   constructor(
     private route: ActivatedRoute,
     private soundService: SoundService,
@@ -24,9 +24,7 @@ export class SoundDetailComponent implements OnInit {
 
   getSound(): void {
     const id = +this.route.snapshot.paramMap.get('id')!;
-
-    this.soundService.getSound(id)
-      .subscribe(sound => this.sound = sound);
+    this.soundService.getSound(id).subscribe(sound => this.sound = sound);
   }
 
   goBack(): void {

@@ -10,9 +10,7 @@ namespace Application.Validators.Sample
             RuleFor(x => x.Id)
                 .NotEmpty();
 
-            RuleFor(x => x.Name)
-                .NotEmpty()
-                .MaximumLength(100);
+            new CreateGenreValidator();
         }
     }
 }

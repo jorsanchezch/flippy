@@ -1,0 +1,170 @@
+<!-- Button trigger modal -->
+<div
+  class="modal fade"
+  id="soundCreateModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="soundCreateModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="soundCreateModalLabel">Create Sound</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="soundForm" (ngSubmit)="onSubmit()">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              formControlName="name"
+              required
+            />
+            <div
+              *ngIf="submitted && soundForm.controls['name'].errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="soundForm.controls['name'].errors['required']">
+                Name is required
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea
+              class="form-control"
+              id="description"
+              rows="3"
+              formControlName="description"
+              required
+            ></textarea>
+            <div
+              *ngIf="submitted && soundForm.controls['description'].errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="soundForm.controls['description'].errors['required']">
+                Description is required
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="bpm">BPM</label>
+            <input
+              type="number"
+              class="form-control"
+              id="bpm"
+              formControlName="bpm"
+              required
+            />
+            <div
+              *ngIf="submitted && soundForm.controls['bpm'].errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="soundForm.controls['bpm'].errors['required']">
+                BPM is required
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="keyRoot">Key Root</label>
+            <select
+              class="form-control"
+              id="keyRoot"
+              formControlName="keyRoot"
+              required
+            >
+              <option *ngFor="let key of keyRoots" [value]="key">
+                {{ key }}
+              </option>
+            </select>
+            <div
+              *ngIf="submitted && soundForm.controls['keyRoot'].errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="soundForm.controls['keyRoot'].errors['required']">
+                Key Root is required
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="keyMod">Key Mod</label>
+            <select
+              class="form-control"
+              id="keyMod"
+              formControlName="keyMod"
+              required
+            >
+              <option *ngFor="let key of keyMods" [value]="key">
+                {{ key }}
+              </option>
+            </select>
+            <div
+              *ngIf="submitted && soundForm.controls['keyMod'].errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="soundForm.controls['keyMod'].errors['required']">
+                Key Mod is required
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="keyForm">Key Form</label>
+            <select
+              class="form-control"
+              id="keyForm"
+              formControlName="keyForm"
+              required
+            >
+              <option *ngFor="let key of keyForms" [value]="key">
+                {{ key }}
+              </option>
+            </select>
+            <div
+              *ngIf="submitted && soundForm.controls['keyForm'].errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="soundForm.controls['keyForm'].errors['required']">
+                Key Form is required
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="audioFile">Audio File</label>
+            <input
+              type="file"
+              class="form-control-file"
+              id="audioFile"
+              (change)="onFileChange($event)"
+              required
+            />
+            <div
+              *ngIf="submitted && soundForm.controls['audioFile'].errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="soundForm.controls['audioFile'].errors['required']">
+                Audio File is required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

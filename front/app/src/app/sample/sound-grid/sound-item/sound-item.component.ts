@@ -10,12 +10,12 @@ export class SoundItemComponent {
   @Input() sound!: Sound;
 
   playSound(): void {
-    const audio = new Audio(this.sound.audioUrl);
+    const audio = new Audio(this.sound.audioFile);
     audio.play();
   }
 
   stopSound(): void {
-    const audio = new Audio(this.sound.audioUrl);
+    const audio = new Audio(this.sound.audioFile);
     audio.pause();
     audio.currentTime = 0;
   }

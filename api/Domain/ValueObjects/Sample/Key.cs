@@ -8,15 +8,6 @@ namespace Domain.ValueObjects.Sample
         public Modification Mod { get; set; }
         public Form Form { get; set; }
         public ICollection<Sound> Sounds { get; set; }
-        
-        public Key() { }
-
-        public Key(Note root, Modification mod, Form form)
-        {
-            Root = root;
-            Mod = mod;
-            Form = form;
-        }
 
         protected override IEnumerable<object> GetEqualityComponents()
         {

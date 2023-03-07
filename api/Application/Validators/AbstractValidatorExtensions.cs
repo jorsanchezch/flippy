@@ -14,5 +14,9 @@ namespace FluentValidation
 
             return result;
         }
+        public static bool BeAValidEnumValue<TEnum>(string value) where TEnum : struct, Enum
+        {
+            return Enum.TryParse<TEnum>(value, out _);
+        }
     }
 }

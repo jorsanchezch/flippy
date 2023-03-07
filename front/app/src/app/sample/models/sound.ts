@@ -4,9 +4,8 @@ export interface Sound {
     id: number;
     name: string;
     description: string;
-    audioUrl: string;
+    audioFile: string;
     bpm: number;
-    length: number;
     keyRoot: string;
     keyMod: string;
     keyForm: string;

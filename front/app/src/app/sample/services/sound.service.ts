@@ -8,7 +8,7 @@ import { env } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class SoundService {
-  private soundsUrl = env.apiUrl + 'api/sounds'; // URL to web api
+  private soundsUrl = env.apiUrl + 'api/sound'; // URL to web api
   private audio!: HTMLAudioElement;
 
   constructor(private http: HttpClient) { }
@@ -22,18 +22,7 @@ export class SoundService {
     return this.http.get<Sound>(url);
   }
 
-  playSample(id: number): void {
-    if (!this.audio) {
-      this.audio = new Audio();
-    }
-    this.audio.src = this.soundsUrl + `/${id}/file`;
-    this.audio.play();
-  }
-
-  stopSample(): void {
-    if (this.audio) {
-      this.audio.pause();
-      this.audio.currentTime = 0;
-    }
+  createSound(formData: FormData): Observable<Sound> {
+    return this.http.post<Sound>(this.soundsUrl, formData);
   }
 }

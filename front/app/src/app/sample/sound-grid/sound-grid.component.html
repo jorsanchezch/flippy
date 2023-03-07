@@ -1,31 +1,34 @@
-<table>
+<div class="container">
+    <button type="button" class="btn btn-primary" style="margin-top: 10px;" data-toggle="modal" data-target="#soundCreateModal">
+      Create Sound
+    </button>
+    <app-sound-create></app-sound-create>
+    <div class="row"> 
+      <app-search-bar></app-search-bar>
+    </div>
+  <table class="table table-striped">
     <thead>
       <tr>
         <th>Name</th>
-        <th>Length</th>
         <th>BPM</th>
-        <th>Key</th>
+        <th>Description</th>
         <th>Instruments</th>
         <th>Genres</th>
+        <th>Player</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let sound of sounds">
+      <tr *ngFor="let sound of sounds | paginate: { itemsPerPage: pageSize, currentPage: currentPage, totalItems: sounds.length }">
         <td>{{ sound.name }}</td>
-        <td>{{ sound.length }}</td>
         <td>{{ sound.bpm }}</td>
-        <td>{{ sound.keyRoot }} {{ sound.keyMod }} {{ sound.keyForm }}</td>
-        <!--td>{{ sound.tags.join(', ') }}</td-->
-        <td>
-          <ul>
-            <li *ngFor="let instrument of sound.instruments">{{ instrument.name }}</li>
-          </ul>
-        </td>
-        <td>
-          <ul>
-            <li *ngFor="let genre of sound.genres">{{ genre.name }}</li>
-          </ul>
-        </td>
+        <td>{{ sound.description }}</td>
+        <td>{{ sound.instruments }}</td>
+        <td>{{ sound.genres }}</td>
+        <td><app-audio-player [base64]="sound.audioFile"></app-audio-player></td>
+        <td><a class="btn btn-primary btn-sm" [routerLink]="['/', sound.id]">Details</a></td>
+        <td><a class="btn btn-primary btn-sm">Delete</a></td>
       </tr>
     </tbody>
   </table>
+  <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+</div>

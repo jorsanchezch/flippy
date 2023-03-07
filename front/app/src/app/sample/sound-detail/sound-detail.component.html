@@ -1,14 +1,68 @@
-<div class="container">
-  <h1>{{ sound.name }}</h1>
-  <p><strong>Duration:</strong> {{ sound.length }}</p>
-  <p><strong>BPM:</strong> {{ sound.bpm }}</p>
-  <p><strong>Key Root:</strong> {{ sound.keyRoot }}</p>
-  <p><strong>Key Mod:</strong> {{ sound.keyMod }}</p>
-  <p><strong>Key Form:</strong> {{ sound.keyForm }}</p>
-  <p><strong>Instruments:</strong> {{ sound.instruments.join(', ') }}</p>
-  <p><strong>Genres:</strong> {{ sound.genres.join(', ') }}</p>
-  <audio controls>
-    <source src="{{ sound.audioUrl }}" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2>{{ sound.name }}</h2>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-lg-4">
+      <div class="card">
+        <div class="card-header">BPM</div>
+        <div class="card-body">{{ sound.bpm }}</div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="card">
+        <div class="card-header">Instruments</div>
+        <div class="card-body">
+          <ul>
+            <li *ngFor="let instrument of sound.instruments">
+              {{ instrument.name }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="card">
+        <div class="card-header">Genres</div>
+        <div class="card-body">
+          <ul>
+            <li *ngFor="let genre of sound.genres">
+              {{ genre.name }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row detail-row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">Description</div>
+        <div class="card-body">{{ sound.description }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row detail-row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">Audio</div>
+        <div class="card-body">
+          <app-audio-player [base64]="sound.audioFile"></app-audio-player>
+        </div>
+      </div>
+    </div>
+  </div>  
+  <div class="row mt-3 ">
+    <div class="col-lg-12">
+      <button class="btn btn-secondary" (click)="goBack()">Back</button>
+    </div>
+  </div>
 </div>

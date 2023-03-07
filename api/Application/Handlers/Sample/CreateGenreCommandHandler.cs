@@ -20,17 +20,16 @@ namespace Application.Handlers.Sample
         {
             var validator = new CreateGenreValidator();
             var request = command.request;
+            var mapper = new GenreMapper();
 
             validator.Validate(request, true);
 
-            var genre = (new GenreMapper()).Map(request);
+
+            var genre = mapper.Map(request);
 
             await _genreRepository.AddAsync(genre);
 
-            return new GenreResponse
-            {
-                Name = genre.Name
-            };
+            return mapper.ToResponse(genre);
         }
     }
 }

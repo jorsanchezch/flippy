@@ -4,18 +4,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { SoundDetailComponent } from './sample/sound-detail/sound-detail.component';
 import { SoundGridComponent } from './sample/sound-grid/sound-grid.component';
-import { SoundListComponent } from './sample/sound-list/sound-list.component';
 import { SoundItemComponent } from './sample/sound-grid/sound-item/sound-item.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SearchPipe } from './pipes/search.pipe';
-import { RouterTestingModule } from "@angular/router/testing";
 import { SoundService } from './sample/services/sound.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './sample/nav-bar/nav-bar.component';
+import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
 // import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
 // import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 // import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
-import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
 // import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
 // import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 // import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
@@ -29,24 +27,32 @@ import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
 // import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-
+import { AppRoutingModule } from './app-routing.module';
+import { AudioPlayerComponent } from './audio-player/audio-player.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { SoundCreateComponent } from './sample/sound-create/sound-create.component'; 
+import { ReactiveFormsModule } from '@angular/forms';
+import { SoundValidator } from './sample/validators/sound.validator';
 
 @NgModule({
   declarations: [
     AppComponent,
     SoundDetailComponent,
     SoundGridComponent,
-    SoundListComponent,
     SoundItemComponent,
     SearchBarComponent,
     SearchPipe,
-    NavBarComponent
+    NavBarComponent,
+    AudioPlayerComponent,
+    SoundCreateComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterTestingModule,
+    AppRoutingModule,
     MDBBootstrapModule,
+    NgxPaginationModule,
+    ReactiveFormsModule,
     // MdbAccordionModule,
     // MdbCarouselModule,
     // MdbCheckboxModule,
@@ -64,7 +70,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     // MdbValidationModule,
     BrowserAnimationsModule,
   ],
-  providers: [SoundService],
+  providers: [SoundService, SoundValidator],
+  entryComponents: [SoundCreateComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

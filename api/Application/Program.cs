@@ -3,8 +3,11 @@ using Application.Requests.Sample;
 using Application.Validators.Sample;
 using Domain.Repositories.Sample;
 using Infrastructure.Repositories.Sample;
+using Domain.Repositories;
+using Infrastructure.Repositories;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Application.Services.Sample;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,11 +20,26 @@ builder.Services.AddRazorPages();
 // Add validators and requests to the container
 builder.Services.AddDbContext<AppDbContext>(x => x.UseMySql(conn, ServerVersion.AutoDetect(conn)));
 
-
-
 builder.Services.AddTransient<IValidator<GenreRequest>, CreateGenreValidator>();
 builder.Services.AddTransient<IValidator<UpdateGenreRequest>, UpdateGenreValidator>();
 builder.Services.AddTransient<IGenreRepository, GenreRepository>();
+
+builder.Services.AddTransient<IValidator<SoundRequest>, CreateSoundValidator>();
+builder.Services.AddTransient<IValidator<UpdateSoundRequest>, UpdateSoundValidator>();
+builder.Services.AddTransient<ISoundRepository, SoundRepository>();
+
+builder.Services.AddTransient<IFileRepository, SoundFileRepository>();
+
+builder.Services.AddTransient<ISoundService, SoundService>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "Cors",
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:5000", "https://localhost:5000");
+                      });
+});
 
 var app = builder.Build();
 
@@ -43,7 +61,10 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+);
+
+app.UseCors("Cors");
 
 app.MapRazorPages();
 

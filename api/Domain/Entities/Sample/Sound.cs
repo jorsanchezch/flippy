@@ -15,6 +15,7 @@ namespace Domain.Entities.Sample
         public int Bpm { get; set; }
         [Required]
         public string AudioUrl { get; set; }
+        public int? CollectionId { get; set; }
         public Key Key { get; set; }
         public Collection Collection { get; set; }
         public ICollection<Instrument> Instruments { get; set; }

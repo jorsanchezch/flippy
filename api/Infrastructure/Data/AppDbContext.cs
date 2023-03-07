@@ -1,5 +1,7 @@
-﻿using Domain.Entities.Identity;
+﻿using Common.Utils;
+using Domain.Entities.Identity;
 using Domain.Entities.Sample;
+using Domain.ValueObjects.Sample;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -41,11 +43,23 @@ namespace Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder); 
+            base.OnModelCreating(modelBuilder);
 
             // This goes for every Value Object
             modelBuilder.Entity<Sound>()
-                .OwnsOne(o => o.Key);
+                .OwnsOne(o => o.Key)
+                .Property(s => s.Root)
+                .HasConversion(new Converter<Note>());
+
+            modelBuilder.Entity<Sound>()
+                .OwnsOne(o => o.Key)
+                .Property(s => s.Mod)
+                .HasConversion(new Converter<Modification>());
+
+            modelBuilder.Entity<Sound>()
+                .OwnsOne(o => o.Key)
+                .Property(s => s.Form)
+                .HasConversion(new Converter<Form>());
 
             string[] musicGenres = {
                 "Rock",
